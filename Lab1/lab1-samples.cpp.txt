@@ -1,0 +1,61 @@
+// WARNING: This code will NOT compile.  
+// It contains the code samples from the cs221 lab 1 write-up.
+
+#include <iostream>
+
+using namespace std; // use standard functions without qualifier
+
+float circleArea(float radius);  // forward function declaration
+
+int main() {
+  float circle_radius;
+  cout << "Enter radius: " << endl;
+  cin >> circle_radius;
+  cout << "Area is: " << circleArea(circle_radius) << endl;
+  return 0;
+}
+
+float circleArea(float radius) {
+  return 3.14159 * radius * radius;  // = pi * r^2
+}
+
+// File I-O ----------------------------------------
+
+#include <fstream>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+  ifstream in("infile.txt");       // input file-stream
+  ofstream out("outfile.txt");     // output file-stream 
+  string ss;
+  // getline() puts next line in ss and discards any newline characters
+  while (getline(in, ss))   
+    out << ss << endl; // add each line to the new file, appending endl 
+  cout << "End of program" << endl;
+  return 0;
+}
+
+// Towers of Hanoi -------------------------
+
+#include <cstdlib> // for atoi
+#include <iostream>
+
+using namespace std;
+
+// forward function declaration
+void moveDisks(int n, const char* FROM, const char* VIA, const char* TO);
+
+int main(int argc, char* argv[]) {
+  if (argc != 2) {
+    cout << "Usage: " << argv[0] << " number_of_disks" << endl;
+    return -1;
+  }
+  int n = atoi(argv[1]);
+  moveDisks(n, "peg A", "peg B", "peg C");
+  return 0;
+}
+
+// put your moveDisks() function here 
